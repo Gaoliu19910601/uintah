@@ -1694,11 +1694,6 @@ SchedulerCommon::scheduleAndDoDataCopy( const GridP & grid )
         }  // using MPI
       }
 
-      if (refinePatchSets[L]->size() > 0) {
-        DOUT(g_schedulercommon_dbg, "Rank-" << d_myworld->myRank() << "  Calling scheduleRefine for patches " << *refinePatchSets[L].get_rep());
-        m_application->scheduleRefine(refinePatchSets[L].get_rep(), sched);
-      }
-
     } else {
       refinePatchSets[L] = scinew PatchSet;
       copyPatchSets[L] = const_cast<PatchSet*>(newLevel->eachPatch());
@@ -1721,6 +1716,15 @@ SchedulerCommon::scheduleAndDoDataCopy( const GridP & grid )
 
       // Monitoring tasks must be scheduled last!!
       scheduleTaskMonitoring( copyPatchSets[L].get_rep() );      
+    }
+
+    //__________________________________
+    //  Scheduling for refine
+    // scjmc: moved after copy tasks since some refinement may need value from
+    // neighbours which need so to be copied beforehand
+    if (refinePatchSets[L]->size() > 0) {
+      DOUT(g_schedulercommon_dbg, "Rank-" << d_myworld->myRank() << "  Calling scheduleRefine for patches " << *refinePatchSets[L].get_rep());
+      m_application->scheduleRefine(refinePatchSets[L].get_rep(), sched);
     }
 
     //__________________________________
