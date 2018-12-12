@@ -416,9 +416,10 @@ Level::getTotalCellsInRegion(const TypeDescription::Type varType,
 
   Patch::VariableBasis basis = Patch::translateTypeToBasis(varType, false);
   
-  for( int i = 0; i < (int)m_real_patches.size(); i++ ) {
-    IntVector patchLow  =  m_real_patches[i]->getExtraLowIndex(  basis, boundaryLayer );
-    IntVector patchHigh =  m_real_patches[i]->getExtraHighIndex( basis, boundaryLayer );
+  // scjmc - using also virtual patches to take into account periodic boundaries on non cubic levels such as refined amr levels
+  for( size_t i = 0; i < m_virtual_and_real_patches.size(); ++i ) {
+    IntVector patchLow  =  m_virtual_and_real_patches[i]->getExtraLowIndex(  basis, boundaryLayer );
+    IntVector patchHigh =  m_virtual_and_real_patches[i]->getExtraHighIndex( basis, boundaryLayer );
 
     if( doesIntersect(lowIndex, highIndex, patchLow, patchHigh) ){
 
