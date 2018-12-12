@@ -631,7 +631,7 @@ Level::setIsNonCubicLevel()
   double levelVol = levelSides.x() * levelSides.y() * levelSides.z();
   
   m_isNonCubicDomain = false;
-  double fuzz = 100 * DBL_EPSILON;
+  double fuzz = 0.5 * cellVolume(); // 100 * DBL_EPSILON;
   if ( std::fabs( patchesVol - levelVol ) > fuzz ) {
     m_isNonCubicDomain = true;
   }
