@@ -27,43 +27,7 @@
 #
 # Makefile fragment for this subdirectory
 
-include $(SCIRUN_SCRIPTS)/smallso_prologue.mk
-
-SRCDIR := CCA/Components/PhaseField
-
-SUBDIRS := \
-  $(SRCDIR)/DataWarehouse \
-  $(SRCDIR)/BoundaryConditions \
-  $(SRCDIR)/AMR \
-  $(SRCDIR)/Applications \
-  $(SRCDIR)/Exceptions \
+SRCDIR = CCA/Components/PhaseField/Exceptions
 
 SRCS += \
-
-BLDSRCS := \
-
-PSELIBS :=                   \
-  CCA/Components/Application \
-  CCA/Components/Schedulers  \
-  CCA/Ports                  \
-  Core/Disclosure            \
-  Core/Exceptions            \
-  Core/Geometry              \
-  Core/GeometryPiece         \
-  Core/Grid                  \
-  Core/IO                    \
-  Core/Math                  \
-  Core/Parallel              \
-  Core/ProblemSpec           \
-  Core/Util
-
-LIBS := $(M_LIBRARY)
-
-INCLUDES := $(INCLUDES)
-
-include $(SCIRUN_SCRIPTS)/recurse.mk
-
-include $(SCIRUN_SCRIPTS)/smallso_epilogue.mk
-
-$(BLDSRCS): %-bld.cc: %-bld.sh
-	bash $<
+   $(SRCDIR)/IntVectorOutOfBounds.cc \

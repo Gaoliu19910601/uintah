@@ -27,43 +27,14 @@
 #
 # Makefile fragment for this subdirectory
 
-include $(SCIRUN_SCRIPTS)/smallso_prologue.mk
-
-SRCDIR := CCA/Components/PhaseField
-
-SUBDIRS := \
-  $(SRCDIR)/DataWarehouse \
-  $(SRCDIR)/BoundaryConditions \
-  $(SRCDIR)/AMR \
-  $(SRCDIR)/Applications \
-  $(SRCDIR)/Exceptions \
+SRCDIR = CCA/Components/PhaseField/DataWarehouse
 
 SRCS += \
+   $(SRCDIR)/DWView-bld.cc \
+   $(SRCDIR)/DWFDView-bld.cc \
 
-BLDSRCS := \
+BLDDIR := $(SRCTOP)/$(SRCDIR)
 
-PSELIBS :=                   \
-  CCA/Components/Application \
-  CCA/Components/Schedulers  \
-  CCA/Ports                  \
-  Core/Disclosure            \
-  Core/Exceptions            \
-  Core/Geometry              \
-  Core/GeometryPiece         \
-  Core/Grid                  \
-  Core/IO                    \
-  Core/Math                  \
-  Core/Parallel              \
-  Core/ProblemSpec           \
-  Core/Util
-
-LIBS := $(M_LIBRARY)
-
-INCLUDES := $(INCLUDES)
-
-include $(SCIRUN_SCRIPTS)/recurse.mk
-
-include $(SCIRUN_SCRIPTS)/smallso_epilogue.mk
-
-$(BLDSRCS): %-bld.cc: %-bld.sh
-	bash $<
+BLDSRCS += \
+   $(BLDDIR)/DWView-bld.cc \
+   $(BLDDIR)/DWFDView-bld.cc \

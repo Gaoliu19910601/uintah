@@ -1,3 +1,4 @@
+#!/bin/bash
 #
 #  The MIT License
 #
@@ -21,49 +22,6 @@
 #  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 #  IN THE SOFTWARE.
 #
-#
-#
-#
-#
-# Makefile fragment for this subdirectory
 
-include $(SCIRUN_SCRIPTS)/smallso_prologue.mk
-
-SRCDIR := CCA/Components/PhaseField
-
-SUBDIRS := \
-  $(SRCDIR)/DataWarehouse \
-  $(SRCDIR)/BoundaryConditions \
-  $(SRCDIR)/AMR \
-  $(SRCDIR)/Applications \
-  $(SRCDIR)/Exceptions \
-
-SRCS += \
-
-BLDSRCS := \
-
-PSELIBS :=                   \
-  CCA/Components/Application \
-  CCA/Components/Schedulers  \
-  CCA/Ports                  \
-  Core/Disclosure            \
-  Core/Exceptions            \
-  Core/Geometry              \
-  Core/GeometryPiece         \
-  Core/Grid                  \
-  Core/IO                    \
-  Core/Math                  \
-  Core/Parallel              \
-  Core/ProblemSpec           \
-  Core/Util
-
-LIBS := $(M_LIBRARY)
-
-INCLUDES := $(INCLUDES)
-
-include $(SCIRUN_SCRIPTS)/recurse.mk
-
-include $(SCIRUN_SCRIPTS)/smallso_epilogue.mk
-
-$(BLDSRCS): %-bld.cc: %-bld.sh
-	bash $<
+SCRIPT="`dirname \"$0\"`"/AMRFDView-bld.sh
+${SCRIPT} -p PureMetalProblem -v CC -s P5 -c FCBilinear -B
