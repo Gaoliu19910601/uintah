@@ -27,8 +27,9 @@
             <Box label="1">
                 <lower>[  0.,  0.,  0.]</lower>
                 <upper>[ 32., 32., 32.]</upper>
-                <patches>[4,4,4]</patches>
+                <patches>[4,4,1]</patches>
             </Box>
+
             <spacing>[1.,1.,1.]</spacing>
         </Level>
         <BoundaryConditions>
@@ -98,7 +99,7 @@
         <save label="u_normL2" />
         <save label="u_normH10" />
         <save label="u_normH20" />
-        <save label="delta_u" />
+        <save label="epsilon_u" />
         <save label="error_u" />
         <save label="error_ux" />
         <save label="error_uy" />
@@ -108,6 +109,5 @@
         <save label="error_uzz" />
         <save label="error_normL2" />
         <save label="error_normH10" />
-        <save label="error_normH20" />
     </DataArchiver>
 </Uintah_specification>
