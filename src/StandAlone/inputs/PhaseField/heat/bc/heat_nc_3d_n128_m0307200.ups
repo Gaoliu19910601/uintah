@@ -26,9 +26,9 @@
             <Box label="1">
                 <lower>[  0.,  0.,  0.]</lower>
                 <upper>[ 16., 16., 16.]</upper>
-                <patches>[16,16,1.250000e-01]</patches>
+                <patches>[16,16,16]</patches>
             </Box>
-            <spacing>[0.125000,128.000000,1.]</spacing>
+            <spacing>[0.125000,0.125000,1.]</spacing>
         </Level>
         <BoundaryConditions>
             <Face side="x-">
@@ -65,4 +65,32 @@
     </Grid>
 <!--__________________________________-->
     <DataArchiver>
-        <filebase>heat_bc_nc_3d_n307200_m
+        <filebase>heat_bc_nc_3d_n1.250000e-01_m0000128.uda</filebase>
+        <outputInitTimestep />
+        <outputInterval>100.</outputInterval>
+        <save label="u" />
+        <save label="ux" />
+        <save label="uy" />
+        <save label="uz" />
+        <save label="uxx" />
+        <save label="uyy" />
+        <save label="uzz" />
+        <save label="u_normL2" />
+        <save label="u_normH10" />
+        <save label="u_normH20" />
+        <save label="epsilon_u" />
+        <save label="error_u" />
+        <save label="error_ux" />
+        <save label="error_uy" />
+        <save label="error_uz" />
+        <save label="error_uxx" />
+        <save label="error_uyy" />
+        <save label="error_uzz" />
+        <save label="error_normL2" />
+        <save label="error_normH10" />
+        <save label="error_normH20" />
+    </DataArchiver>
+</Uintah_specification>
+<Uintah_specification>
+    <Meta>
+        <title>heat_bc_nc_3d_n307200_m
