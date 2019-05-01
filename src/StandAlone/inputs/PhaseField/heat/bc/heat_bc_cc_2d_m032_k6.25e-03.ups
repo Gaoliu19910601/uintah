@@ -57,20 +57,9 @@
     <DataArchiver>
         <filebase>heat_bc_cc_2d_m032_k6.25e-03.uda</filebase>
         <outputTimestepInterval>1</outputTimestepInterval>
-        <save label="u" />
-        <save label="ux" />
-        <save label="uy" />
-        <save label="uxx" />
-        <save label="uyy" />
         <save label="u_normL2" />
         <save label="u_normH10" />
         <save label="u_normH20" />
-        <save label="epsilon_u" />
-        <save label="error_u" />
-        <save label="error_ux" />
-        <save label="error_uy" />
-        <save label="error_uxx" />
-        <save label="error_uyy" />
         <save label="error_normL2" />
         <save label="error_normH10" />
         <save label="error_normH20" />
